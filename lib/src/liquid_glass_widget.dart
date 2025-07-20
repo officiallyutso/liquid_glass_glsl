@@ -27,37 +27,55 @@ class LiquidGlassGLSL extends StatefulWidget {
   const LiquidGlassGLSL({
     Key? key,
     required this.child,
-    this.config = const LiquidGlassConfig(),
+    LiquidGlassConfig? config,
     this.width,
     this.height,
     this.padding,
     this.margin,
-  }) : super(key: key);
+  }) : config = config ?? const LiquidGlassConfig(
+         blurSigma: 20.0,
+         distortionIntensity: 0.04,
+         animationSpeed: 1.5,
+         glassColor: Color(0x8AFFFFFF),
+         useBackdrop: true,
+         enableTouchRipples: false,
+         touchRippleRadius: 0.1,
+       ), super(key: key);
   
   /// Convenience constructor with individual parameters
-  const LiquidGlassGLSL.custom({
+  factory LiquidGlassGLSL.custom({
     Key? key,
-    required this.child,
-    double blurSigma = 20.0,
-    double distortionIntensity = 0.04,
-    double animationSpeed = 1.5,
-    Color glassColor = Colors.white54,
-    bool useBackdrop = true,
-    bool enableTouchRipples = false,
+    required Widget child,
+    double? blurSigma,
+    double? distortionIntensity,
+    double? animationSpeed,
+    Color? glassColor,
+    bool? useBackdrop,
+    bool? enableTouchRipples,
     BorderRadius? borderRadius,
-    this.width,
-    this.height,
-    this.padding,
-    this.margin,
-  }) : config = LiquidGlassConfig(
-         blurSigma: blurSigma,
-         distortionIntensity: distortionIntensity,
-         animationSpeed: animationSpeed,
-         glassColor: glassColor,
-         useBackdrop: useBackdrop,
-         enableTouchRipples: enableTouchRipples,
-         borderRadius: borderRadius,
-       ), super(key: key);
+    double? width,
+    double? height,
+    EdgeInsetsGeometry? padding,
+    EdgeInsetsGeometry? margin,
+  }) {
+    return LiquidGlassGLSL(
+      key: key,
+      child: child,
+      width: width,
+      height: height,
+      padding: padding,
+      margin: margin,
+      config: LiquidGlassConfig.custom(
+        blurSigma: blurSigma,
+        distortionIntensity: distortionIntensity,
+        animationSpeed: animationSpeed,
+        glassColor: glassColor,
+        useBackdrop: useBackdrop,
+        enableTouchRipples: enableTouchRipples,
+        borderRadius: borderRadius,
+      ),
+    );
+  }
 
   @override
   State<LiquidGlassGLSL> createState() => _LiquidGlassGLSLState();

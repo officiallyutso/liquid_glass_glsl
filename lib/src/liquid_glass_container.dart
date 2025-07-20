@@ -27,7 +27,7 @@ class LiquidGlassContainer extends StatelessWidget {
     this.blurSigma = 20.0,
     this.distortionIntensity = 0.04,
     this.animationSpeed = 1.5,
-    this.glassColor = Colors.white54,
+    this.glassColor = const Color(0x8AFFFFFF),
     this.borderRadius,
     this.padding,
     this.margin,
@@ -50,6 +50,7 @@ class LiquidGlassContainer extends StatelessWidget {
         borderRadius: borderRadius,
         useBackdrop: useBackdrop,
         enableTouchRipples: enableTouchRipples,
+        touchRippleRadius: 0.1,
       ),
       child: child,
     );

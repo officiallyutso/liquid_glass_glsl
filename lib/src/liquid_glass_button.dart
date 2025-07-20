@@ -25,7 +25,7 @@ class LiquidGlassButton extends StatefulWidget {
     this.blurSigma = 18.0,
     this.distortionIntensity = 0.03,
     this.animationSpeed = 1.2,
-    this.glassColor = Colors.white38,
+    this.glassColor = const Color(0x61FFFFFF),
     this.borderRadius,
     this.padding,
     this.margin,
@@ -108,6 +108,7 @@ class _LiquidGlassButtonState extends State<LiquidGlassButton>
                 borderRadius: widget.borderRadius ?? BorderRadius.circular(12.0),
                 useBackdrop: widget.useBackdrop,
                 enableTouchRipples: true,
+                touchRippleRadius: 0.15,
               ),
               child: DefaultTextStyle(
                 style: const TextStyle(
